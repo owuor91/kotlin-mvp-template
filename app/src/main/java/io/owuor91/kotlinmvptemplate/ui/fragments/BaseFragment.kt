@@ -1,7 +1,7 @@
 package io.owuor91.kotlinmvptemplate.ui.fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import io.owuor91.kotlinmvptemplate.di.fragment.FragmentModule
 import io.owuor91.kotlinmvptemplate.ui.activities.BaseActivity
 import io.reactivex.disposables.CompositeDisposable
 
-class BaseFragment : Fragment() {
+class BaseFragment : androidx.fragment.app.Fragment() {
 
   val layoutId: Int
     get() = NO_LAYOUT

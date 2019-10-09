@@ -3,7 +3,7 @@ package io.owuor91.kotlinmvptemplate.ui.activities
 import android.content.Context
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import io.owuor91.data.util.RxUtil
 import io.owuor91.kotlinmvptemplate.MyApplication
@@ -11,7 +11,7 @@ import io.owuor91.kotlinmvptemplate.di.activity.ActivityComponent
 import io.reactivex.disposables.CompositeDisposable
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
-class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
   protected lateinit var compositeDisposable: CompositeDisposable
   
   override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {

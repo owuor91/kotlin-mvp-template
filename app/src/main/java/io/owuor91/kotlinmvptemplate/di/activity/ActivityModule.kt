@@ -1,7 +1,7 @@
 package io.owuor91.kotlinmvptemplate.di.activity
 
 import android.content.Context
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.FragmentManager
 import android.view.LayoutInflater
 import dagger.Module
 import dagger.Provides
@@ -26,7 +26,7 @@ class ActivityModule(private val baseActivity: BaseActivity) {
     return LayoutInflater.from(context)
   }
 
-  @Provides fun provideFragmentManager(activity: BaseActivity): FragmentManager {
+  @Provides fun provideFragmentManager(activity: BaseActivity): androidx.fragment.app.FragmentManager {
     return activity.getSupportFragmentManager()
   }
 }
