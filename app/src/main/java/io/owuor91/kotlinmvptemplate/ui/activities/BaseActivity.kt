@@ -12,7 +12,7 @@ import io.reactivex.disposables.CompositeDisposable
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 open class BaseActivity : AppCompatActivity() {
-  protected lateinit var compositeDisposable: CompositeDisposable
+  //protected var compositeDisposable: CompositeDisposable
   
   override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
     super.onCreate(savedInstanceState, persistentState)
@@ -29,14 +29,19 @@ open class BaseActivity : AppCompatActivity() {
   
   override fun onStart() {
     super.onStart()
-    compositeDisposable = RxUtil.initDisposables(compositeDisposable)
+    //var compositeDisposable = RxUtil.initDisposables(compositeDisposable)
   }
   
   override fun attachBaseContext(base: Context) {
     super.attachBaseContext(CalligraphyContextWrapper.wrap(base))
   }
   
+  override fun onStop() {
+    super.onStop()
+    dispose()
+  }
+  
   protected fun dispose() {
-    RxUtil.dispose(compositeDisposable)
+    //RxUtil.dispose(compositeDisposable)
   }
 }
