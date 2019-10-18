@@ -8,7 +8,7 @@ import io.owuor91.data.api.NotesApi
 import io.owuor91.domain.di.DIConstants
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
@@ -29,12 +29,12 @@ class ApiModule {
   fun provideDefaultRetrofit(gson: Gson, @Named(DIConstants.DEFAULT) okHttpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder().baseUrl(BuildConfig.BASE_URL)
       .addConverterFactory(GsonConverterFactory.create(gson))
-      .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+      .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
       .client(okHttpClient)
       .build()
   }
   
-  @Provides @Named(DIConstants.API) fun provideNotesApi(@Named(DIConstants.DEFAULT) retrofit: Retrofit): NotesApi {
+  @Provides fun provideNotesApi(@Named(DIConstants.DEFAULT) retrofit: Retrofit): NotesApi{
     return retrofit.create(NotesApi::class.java)
   }
 }

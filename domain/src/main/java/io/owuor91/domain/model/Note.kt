@@ -1,4 +1,6 @@
 package io.owuor91.domain.model
 
-data class Note(var id: Int, var title: String, var noteText: String) {
+import com.google.gson.annotations.SerializedName
+
+data class Note(var id: Int, var title: String, @SerializedName("noteText") var noteText: String) {
 }

@@ -1,6 +1,5 @@
 package io.owuor91.presentation
 
-import io.owuor91.data.repository.NotesApiRepository
 import io.owuor91.domain.di.DIConstants
 import io.owuor91.domain.model.Note
 import io.owuor91.domain.repository.NotesRepository
@@ -13,7 +12,7 @@ import javax.inject.Named
 class NotesPresenter @Inject constructor() : BasePresenter {
   lateinit var compositeDisposable: CompositeDisposable
   lateinit var view: View
-  @Inject @Named(DIConstants.API) lateinit var notesApiRepository: NotesRepository
+  @Inject @field:Named(DIConstants.API) lateinit var notesApiRepository: NotesRepository
   
   fun getNotes() {
     compositeDisposable = CompositeDisposable()

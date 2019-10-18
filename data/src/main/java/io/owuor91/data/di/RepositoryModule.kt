@@ -10,8 +10,8 @@ import javax.inject.Named
 
 @Module
 class RepositoryModule {
-  @Provides @Named(DIConstants.API) fun provideNotesApiRepository(notesApi: NotesApi):
-      NotesRepository {
+  @Provides @Named(DIConstants.API)
+  fun provideNotesApiRepository(notesApi: NotesApi): NotesRepository {
     return NotesApiRepository(notesApi)
   }
 }
