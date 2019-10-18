@@ -3,19 +3,19 @@ package io.owuor91.data.di
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
-
 import io.owuor91.data.BuildConfig
+import io.owuor91.data.api.NotesApi
 import io.owuor91.domain.di.DIConstants
-import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Named
 
 @Module
 class ApiModule {
-
+  
   @Provides @Named(DIConstants.DEFAULT) fun provideDefaultOkHttpClient(): OkHttpClient {
     return OkHttpClient.Builder().connectTimeout(1, TimeUnit.MINUTES)
       .writeTimeout(1, TimeUnit.MINUTES)
@@ -23,7 +23,7 @@ class ApiModule {
       .retryOnConnectionFailure(true)
       .build()
   }
-
+  
   @Provides
   @Named(DIConstants.DEFAULT)
   fun provideDefaultRetrofit(gson: Gson, @Named(DIConstants.DEFAULT) okHttpClient: OkHttpClient): Retrofit {
@@ -34,7 +34,7 @@ class ApiModule {
       .build()
   }
   
-  /*@Provides public ItemsApi provideItemsApi(@Named(DIConstants.DEFAULT) Retrofit retrofit) {
-    return retrofit.create(ItemsApi.class);
-  }*/
+  @Provides @Named(DIConstants.API) fun provideNotesApi(@Named(DIConstants.DEFAULT) retrofit: Retrofit): NotesApi {
+    return retrofit.create(NotesApi::class.java)
+  }
 }
