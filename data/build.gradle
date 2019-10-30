@@ -17,13 +17,17 @@ android {
   }
 
   buildTypes {
+    debug{
+      buildConfigField('String', 'BASE_URL', '"https://api.url.com"')
+    }
+
+    staging{
+      buildConfigField('String', 'BASE_URL', '"https://api.url.com"')
+    }
+
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-      buildConfigField('String', 'BASE_URL', '"api.url.com"')
-    }
-
-    debug{
       buildConfigField('String', 'BASE_URL', '"api.url.com"')
     }
   }
@@ -45,9 +49,9 @@ dependencies {
   implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
 
 
-  api 'androidx.room:room-runtime:2.2.0'
-  api 'androidx.room:room-rxjava2:2.2.0'
-  annotationProcessor "androidx.room:room-compiler:2.2.0"
+  api 'androidx.room:room-runtime:2.2.1'
+  api 'androidx.room:room-rxjava2:2.2.1'
+  annotationProcessor "androidx.room:room-compiler:2.2.1"
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
   testImplementation "org.mockito:mockito-core:2.28.2"

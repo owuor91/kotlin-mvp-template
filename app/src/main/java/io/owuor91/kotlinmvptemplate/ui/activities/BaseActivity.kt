@@ -11,8 +11,7 @@ import io.owuor91.kotlinmvptemplate.di.activity.ActivityComponent
 import io.reactivex.disposables.CompositeDisposable
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
-open class BaseActivity : AppCompatActivity() {
-  //protected var compositeDisposable: CompositeDisposable
+abstract class BaseActivity : AppCompatActivity() {
   
   override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
     super.onCreate(savedInstanceState, persistentState)
@@ -29,7 +28,6 @@ open class BaseActivity : AppCompatActivity() {
   
   override fun onStart() {
     super.onStart()
-    //var compositeDisposable = RxUtil.initDisposables(compositeDisposable)
   }
   
   override fun attachBaseContext(base: Context) {
@@ -41,7 +39,5 @@ open class BaseActivity : AppCompatActivity() {
     dispose()
   }
   
-  protected fun dispose() {
-    //RxUtil.dispose(compositeDisposable)
-  }
+  abstract fun dispose()
 }
