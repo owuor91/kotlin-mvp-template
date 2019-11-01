@@ -4,7 +4,7 @@ interface BasePresenter {
   fun dispose()
   
   interface View{
-    fun handleError()
+    fun handleError(throwable: Throwable)
     
     fun showProgress()
     
