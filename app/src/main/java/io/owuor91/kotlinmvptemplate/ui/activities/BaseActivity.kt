@@ -1,15 +1,11 @@
 package io.owuor91.kotlinmvptemplate.ui.activities
 
-import android.content.Context
 import android.os.Bundle
 import android.os.PersistableBundle
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
-import io.owuor91.data.util.RxUtil
+import androidx.appcompat.app.AppCompatActivity
 import io.owuor91.kotlinmvptemplate.MyApplication
 import io.owuor91.kotlinmvptemplate.di.activity.ActivityComponent
-import io.reactivex.disposables.CompositeDisposable
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 abstract class BaseActivity : AppCompatActivity() {
   
@@ -28,10 +24,6 @@ abstract class BaseActivity : AppCompatActivity() {
   
   override fun onStart() {
     super.onStart()
-  }
-  
-  override fun attachBaseContext(base: Context) {
-    super.attachBaseContext(CalligraphyContextWrapper.wrap(base))
   }
   
   override fun onStop() {
