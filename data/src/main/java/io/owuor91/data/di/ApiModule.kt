@@ -10,7 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 import okhttp3.logging.HttpLoggingInterceptor.Level.HEADERS
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
@@ -37,7 +37,7 @@ class ApiModule {
   fun provideDefaultRetrofit(gson: Gson, @Named(DIConstants.DEFAULT) okHttpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder().baseUrl(BuildConfig.BASE_URL)
       .addConverterFactory(GsonConverterFactory.create(gson))
-      .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+      .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
       .client(okHttpClient)
       .build()
   }
