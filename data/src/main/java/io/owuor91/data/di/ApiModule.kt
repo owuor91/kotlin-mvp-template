@@ -7,6 +7,9 @@ import io.owuor91.data.BuildConfig
 import io.owuor91.data.api.NotesApi
 import io.owuor91.domain.di.DIConstants
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
+import okhttp3.logging.HttpLoggingInterceptor.Level.HEADERS
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,10 +20,16 @@ import javax.inject.Named
 class ApiModule {
   
   @Provides @Named(DIConstants.DEFAULT) fun provideDefaultOkHttpClient(): OkHttpClient {
+    var httpLoggingInterceptor = HttpLoggingInterceptor()
+    if (BuildConfig.DEBUG) {
+      httpLoggingInterceptor.level = HEADERS
+      httpLoggingInterceptor.level = BODY
+    }
     return OkHttpClient.Builder().connectTimeout(1, TimeUnit.MINUTES)
       .writeTimeout(1, TimeUnit.MINUTES)
       .readTimeout(2, TimeUnit.MINUTES)
       .retryOnConnectionFailure(true)
+      .addInterceptor(httpLoggingInterceptor)
       .build()
   }
   

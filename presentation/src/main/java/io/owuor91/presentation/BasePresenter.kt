@@ -5,5 +5,9 @@ interface BasePresenter {
   
   interface View{
     fun handleError(throwable: Throwable)
+    
+    fun showProgress()
+    
+    fun hideProgress()
   }
 }

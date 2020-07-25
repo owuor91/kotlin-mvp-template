@@ -26,4 +26,8 @@ class MainActivity : BaseActivity(), NotesPresenter.View {
     
     Toast.makeText(baseContext,notesList.size.toString(), Toast.LENGTH_LONG).show()
   }
+  
+  override fun dispose() {
+    //
+  }
 }

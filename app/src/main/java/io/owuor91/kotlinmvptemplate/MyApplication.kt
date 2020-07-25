@@ -10,7 +10,6 @@ import io.owuor91.kotlinmvptemplate.di.app.ApplicationComponent
 import io.owuor91.kotlinmvptemplate.di.app.ApplicationModule
 import io.owuor91.kotlinmvptemplate.di.app.DaggerApplicationComponent
 import io.owuor91.kotlinmvptemplate.ui.activities.BaseActivity
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 
 class MyApplication : Application() {
   private var applicationComponent: ApplicationComponent? = null
@@ -24,20 +23,9 @@ class MyApplication : Application() {
     applicationComponent!!.inject(this)
 
     Stetho.initializeWithDefaults(this)
-
-    /*CalligraphyConfig.initDefault(
-      CalligraphyConfig.Builder().setDefaultFontPath(CUSTOM_FONT_ASSET_PATH)
-        .setFontAttrId(R.attr.fontPath)
-        .build()
-    )*/
-
   }
 
   fun getActivityInjector(baseActivity: BaseActivity): ActivityComponent {
     return applicationComponent!!.activityComponentBuilder().activityModule(ActivityModule(baseActivity)).build()
-  }
-
-  companion object {
-    val CUSTOM_FONT_ASSET_PATH = "fonts/GothamRoundedBook.ttf"
   }
 }

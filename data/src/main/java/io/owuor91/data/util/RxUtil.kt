@@ -4,18 +4,18 @@ import io.reactivex.disposables.CompositeDisposable
 
 class RxUtil {
   companion object {
-    fun initDisposables(compositeDisposable: CompositeDisposable): CompositeDisposable {
-      /*return if (compositeDisposable == null || compositeDisposable.isDisposed) {
-        CompositeDisposable()
-      } else compositeDisposable*/
-      if (compositeDisposable.isDisposed) {
-        return CompositeDisposable()
+    fun initDisposables(compositeDisposable: CompositeDisposable?): CompositeDisposable {
+      return if (compositeDisposable != null) {
+        if (compositeDisposable.isDisposed) {
+          CompositeDisposable()
+        } else {
+          compositeDisposable
+        }
       } else {
-        return compositeDisposable
+        CompositeDisposable()
       }
-      
     }
-    
+  
     fun dispose(compositeDisposable: CompositeDisposable?) {
       compositeDisposable?.dispose()
     }
