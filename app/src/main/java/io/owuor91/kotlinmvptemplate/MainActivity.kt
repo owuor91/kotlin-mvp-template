@@ -24,10 +24,18 @@ class MainActivity : BaseActivity(), NotesPresenter.View {
   
   override fun displayNotes(notesList: List<Note>) {
     
-    Toast.makeText(baseContext,notesList.size.toString(), Toast.LENGTH_LONG).show()
+    Toast.makeText(baseContext, notesList.size.toString(), Toast.LENGTH_LONG).show()
   }
   
   override fun dispose() {
     //
+  }
+  
+  override fun showProgress() {
+  
+  }
+  
+  override fun hideProgress() {
+  
   }
 }
